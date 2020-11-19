@@ -26,6 +26,16 @@ a:hover {
   color: #ff8000;
 }
 
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin-top: 1rem;
+}
+
 h1 {
   font-size: 1.8rem;
   padding: 1rem 0;
@@ -34,6 +44,30 @@ h1 {
 h2 {
   font-size: 1.6rem;
   padding: 1rem 0;
+}
+
+button {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid #a4a4a4;
+  font-size: 1.6rem;
+  font-family: Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8f8f8;
+  cursor: pointer;
+}
+
+button.primary {
+  background-color: #f0c040;
+}
+
+button.block {
+  width: 100%;
+}
+
+button:hover {
+  border: 0.1rem solid #404040;
 }
 
 /* Layout */
@@ -99,6 +133,13 @@ img.medium {
   width: 100%;
 }
 
+/* by doing this when comes responsive, 
+the image with extend the width to 100% of the screen 
+to make the following div to be fall down */
+img.large {
+  width: 100%;
+}
+
 /* card */
 
 .card {
@@ -125,4 +166,30 @@ img.medium {
 .rating span {
   color: #f0c040;
   margin: 0.1rem;
+}
+
+/* Rating Reviews */
+.rating span:last-child {
+  color: #404040;
+}
+
+/* ProductScreen */
+.row.top {
+  align-items: flex-start;
+}
+
+.col-1 {
+  flex: 1 1 25rem;
+}
+.col-2 {
+  flex: 2 1 50rem;
+}
+
+/* alert for ProductScreen */
+.success {
+  color: #20a002;
+}
+
+.error {
+  color: #802020;
 }
