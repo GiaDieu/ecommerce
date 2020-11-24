@@ -1,0 +1,31 @@
+{
+  "name": "ecommerce",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --watch server --exec babel-node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GiaDieu/ecommerce.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GiaDieu/ecommerce/issues"
+  },
+  "homepage": "https://github.com/GiaDieu/ecommerce#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/node": "^7.12.6",
+    "@babel/preset-env": "^7.12.1",
+    "eslint": "^7.13.0",
+    "eslint-plugin-react": "^7.21.5",
+    "nodemon": "^2.0.6"
+  }
+}
