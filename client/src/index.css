@@ -45,15 +45,25 @@ h2 {
   font-size: 1.6rem;
   padding: 1rem 0;
 }
-
+input,
+select,
+textarea,
 button {
   padding: 1rem;
   border-radius: 0.5rem;
   border: 0.1rem solid #a4a4a4;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-family: Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+select {
+  font-size: 1.3rem;
+  padding: 0.5rem 1rem;
+}
+
+button {
   background-color: #f8f8f8;
   cursor: pointer;
 }
@@ -66,6 +76,9 @@ button.block {
   width: 100%;
 }
 
+input:hover,
+select:hover,
+textarea:hover,
 button:hover {
   border: 0.1rem solid #404040;
 }
@@ -75,9 +88,9 @@ button:hover {
 .grid-container {
   display: grid;
   grid-template-areas:
-    "header"
-    "main"
-    "footer";
+    'header'
+    'main'
+    'footer';
   grid-template-columns: 1fr;
   grid-template-rows: 5rem 1fr 5rem;
   height: 100%;
