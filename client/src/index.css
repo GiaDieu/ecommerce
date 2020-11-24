@@ -123,6 +123,16 @@ a.brand {
   font-weight: 700;
 }
 
+/* badge appears saved cartItems from localStorage */
+.badge {
+  background-color: #f02020;
+  color: #fff;
+  border-radius: 50%;
+  padding: 0.2rem 0.7rem;
+  font-size: 1.4rem;
+  margin-left: 0.1rem;
+}
+
 .row {
   display: flex;
   justify-content: space-between;
