@@ -1,28 +1,20 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import Header from "./Layout/Header";
 import HomeScreen from "./Screens/HomeScreen";
 import ProductScreen from "./Screens/ProductScreen";
+import Footer from "./Layout/Footer";
 
 const App = () => {
   return (
     <Router>
       <div className="grid-container">
-        <header className="row">
-          <div>
-            <a className="brand" href="/">
-              giadieu
-            </a>
-          </div>
-          <div>
-            <a href="/cart">Cart</a>
-            <a href="/signin">Sign In</a>
-          </div>
-        </header>
+        <Header />
         <main>
           <Route path="/" exact component={HomeScreen} />
           <Route path="/product/:id" component={ProductScreen} />
         </main>
-        <footer className="row center">All Rights Reserved</footer>
+        <Footer />
       </div>
     </Router>
   );
