@@ -45,6 +45,12 @@ h2 {
   font-size: 1.6rem;
   padding: 1rem 0;
 }
+
+h3 {
+  font-size: 1.6rem;
+  padding: 1rem 0;
+}
+
 input,
 select,
 textarea,
@@ -151,6 +157,12 @@ img {
   border-radius: 0.5rem;
 }
 
+img.small {
+  height: 5rem;
+  max-width: 5rem;
+  width: 100%;
+}
+
 img.medium {
   max-width: 29rem;
   width: 100%;
@@ -203,9 +215,14 @@ img.large {
 
 .col-1 {
   flex: 1 1 25rem;
+  margin-left: 2rem;
 }
 .col-2 {
   flex: 2 1 50rem;
+}
+
+.min-30 {
+  min-width: 20rem;
 }
 
 /* alert for ProductScreen */
@@ -232,4 +249,12 @@ img.large {
 .alert-danger {
   color: #a020a0;
   background-color: #ffe0e0e0;
+}
+
+/* cart */
+.cart-select {
+  display: flex;
+  justify-content: center;
+  max-width: 120px;
+  flex: 1 1 auto;
 }
