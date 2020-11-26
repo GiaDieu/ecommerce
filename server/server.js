@@ -29,7 +29,7 @@ app.use((err, req, res, next) => {
   next();
 });
 
-// Create Products
+// Create Products Route
 app.use('/api/products', productRouter);
 
 //set Up Server
