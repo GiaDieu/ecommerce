@@ -1,8 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import data from './data';
 import userRouter from './routers/userRouter.js';
-
+import productRouter from './routers/productRouter';
 // in order to run this import (ES6), install some packages npm install @babel/cli @babel/core  @babel/node @babel/preset-env nodemon --save-dev and create the file .babelrc and set up
 const app = express();
 
@@ -22,19 +21,9 @@ app.use((err, req, res, next) => {
 });
 
 // Create Products
-app.get('/api/products', async (req, res) => {
-  res.send(data);
-});
+app.use('/api/products', productRouter);
 
 //Create ProductDetails
-app.get('/api/products/:id', async (req, res) => {
-  const product = data.products.find((x) => x._id === req.params.id);
-  if (product) {
-    res.send(product);
-  } else {
-    res.status(404).send({ msg: 'Product Not Found!' });
-  }
-});
 
 //set Up Server
 app.get('/', async (req, res) => {
