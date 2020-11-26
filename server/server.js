@@ -1,9 +1,17 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import bodyParser from 'body-parser';
 import userRouter from './routers/userRouter.js';
 import productRouter from './routers/productRouter';
-// in order to run this import (ES6), install some packages npm install @babel/cli @babel/core  @babel/node @babel/preset-env nodemon --save-dev and create the file .babelrc and set up
+// in order to run this import (ES6), install some packages npm install @babel/cli @babel/core  @babel/node @babel/preset-env nodemon --save-dev and create the file .babelrc and set up;
+
+dotenv.config();
 const app = express();
+
+//these 2 lines are middleware to get the json data from body (check Postman)
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //connect to DB
 mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/ecommerce', {
@@ -18,12 +26,11 @@ app.use('/api/users', userRouter);
 // the errors of duplicate of loading API user
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
+  next();
 });
 
 // Create Products
 app.use('/api/products', productRouter);
-
-//Create ProductDetails
 
 //set Up Server
 app.get('/', async (req, res) => {
