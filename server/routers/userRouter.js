@@ -33,7 +33,7 @@ userRouter.post(
         return;
       }
     }
-    res.status(401).send({ message: 'INVALID USER EMAIL OR PASSWORD!' });
+    res.status(401).send({ msg: 'INVALID USER EMAIL OR PASSWORD!' });
   }),
 );
 export default userRouter;
