@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import userRouter from './routers/userRouter.js';
 import productRouter from './routers/productRouter';
+import orderRouter from './routers/orderRouter.js';
 // in order to run this import (ES6), install some packages npm install @babel/cli @babel/core  @babel/node @babel/preset-env nodemon --save-dev and create the file .babelrc and set up;
 
 dotenv.config();
@@ -31,6 +32,9 @@ app.use((err, req, res, next) => {
 
 // Create Products Route
 app.use('/api/products', productRouter);
+
+//Create Order Route
+app.use('/api/orders', orderRouter);
 
 //set Up Server
 app.get('/', async (req, res) => {
