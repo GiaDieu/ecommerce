@@ -226,6 +226,10 @@ img.large {
 }
 
 /* alert for ProductScreen */
+.loading {
+  display: block !important;
+}
+
 .success {
   color: #20a002;
 }
