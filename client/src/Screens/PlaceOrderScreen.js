@@ -40,7 +40,6 @@ const PlaceOrderScreen = (props) => {
   //then component will be rendered third time, and the useEffect is going to run the last time, but there is no success dependency, it stops
 
   useEffect(() => {
-    console.log('useEffect');
     if (success) {
       props.history.push(`/order/${order._id}`);
       dispatch({ type: ORDER_CREATE_RESET });
