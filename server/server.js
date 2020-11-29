@@ -22,10 +22,10 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/ecommerce', {
 });
 
 // the errors of duplicate of loading API user
-// app.use((err, req, res, next) => {
-//   res.status(500).send({ message: err.message });
-//   next();
-// });
+app.use((err, req, res, next) => {
+  res.status(500).send({ message: err.message });
+  next();
+});
 
 // User Route
 app.use('/api/users', userRouter);
@@ -35,6 +35,11 @@ app.use('/api/products', productRouter);
 
 //Create Order Route
 app.use('/api/orders', orderRouter);
+
+//create API PayPal
+app.get('/api/config/paypal', (req, res) => {
+  res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
+});
 
 //set Up Server
 app.get('/', async (req, res) => {
