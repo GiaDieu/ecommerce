@@ -1,7 +1,12 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { createOrder } from '../Actions/orderAction';
 import CheckoutSteps from '../components/CheckoutSteps';
+import { ORDER_CREATE_RESET } from '../constants/orderConstants';
+
+import LoadingBox from '../components/LoadingBox';
+import MessageBox from '../components/MessageBox';
 
 const PlaceOrderScreen = (props) => {
   const cart = useSelector((state) => state.cart);
@@ -19,9 +24,29 @@ const PlaceOrderScreen = (props) => {
   cart.taxPrice = toPrice(0.15 * cart.itemsPrice);
   cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
 
+  const dispatch = useDispatch();
   const placeOrderHandler = () => {
     //TODO: dispatch place order action
+    dispatch(createOrder({ ...cart, orderItems: cart.cartItems }));
+    //reason for creating new key orderitems, because the server backend is requiring orderItems
   };
+
+  const ordersCreate = useSelector((state) => state.ordersCreate);
+  const { loading, success, order, error } = ordersCreate;
+
+  //when Rendering Component, useEffect is going to run 1 time, nothing updated, and when we clicking placeholder button,
+  //Component will be rerendered, and this time useEffect is going to run again and get dependency from the success is true or not from reducer store,
+  //if it is true,which means it is updating then the callback function in useEffect is going to run including dispatch({type: ORDER_CREATE_RESET}),
+  //then component will be rendered third time, and the useEffect is going to run the last time, but there is no success dependency, it stops
+
+  useEffect(() => {
+    console.log('useEffect');
+    if (success) {
+      props.history.push(`/order/${order._id}`);
+      dispatch({ type: ORDER_CREATE_RESET });
+    }
+  }, [success, props.history, dispatch, loading, error, order]);
+
   return (
     <div>
       <CheckoutSteps step1 step2 step3 step4 />
@@ -123,6 +148,8 @@ const PlaceOrderScreen = (props) => {
                   Place Order
                 </button>
               </li>
+              {loading && <LoadingBox></LoadingBox>}
+              {error && <MessageBox variant="danger">{error}</MessageBox>}
             </ul>
           </div>
         </div>
