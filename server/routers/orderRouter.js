@@ -1,7 +1,7 @@
 import express from 'express';
 import expressAsyncHandler from 'express-async-handler';
-import Order from '../models/orderModel.js';
-import { isAuth } from '../utils.js';
+import Order from '../models/orderModel';
+import { isAuth } from '../utils';
 
 const orderRouter = express.Router();
 
@@ -22,6 +22,7 @@ orderRouter.post(
         totalPrice: req.body.totalPrice,
         user: req.user._id,
       });
+
       const createdOrder = await order.save();
       res.status(201).send({ msg: 'New Order Created', order: createdOrder });
     }

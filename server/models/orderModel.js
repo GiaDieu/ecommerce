@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const orderSchema = mongoose.Schema(
+const orderSchema = new mongoose.Schema(
   {
     orderItems: [
       {
@@ -11,7 +11,7 @@ const orderSchema = mongoose.Schema(
         product: {
           type: mongoose.Schema.Types.ObjectId,
           ref: 'Product',
-          required: true,
+          required: false,
         },
       },
     ],

@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import userRouter from './routers/userRouter.js';
 import productRouter from './routers/productRouter';
-import orderRouter from './routers/orderRouter.js';
+import orderRouter from './routers/orderRouter';
 // in order to run this import (ES6), install some packages npm install @babel/cli @babel/core  @babel/node @babel/preset-env nodemon --save-dev and create the file .babelrc and set up;
 
 dotenv.config();
@@ -21,14 +21,14 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/ecommerce', {
   useCreateIndex: true,
 });
 
+// the errors of duplicate of loading API user
+// app.use((err, req, res, next) => {
+//   res.status(500).send({ message: err.message });
+//   next();
+// });
+
 // User Route
 app.use('/api/users', userRouter);
-
-// the errors of duplicate of loading API user
-app.use((err, req, res, next) => {
-  res.status(500).send({ message: err.message });
-  next();
-});
 
 // Create Products Route
 app.use('/api/products', productRouter);

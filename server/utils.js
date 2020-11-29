@@ -15,10 +15,12 @@ export const generateToken = (user) => {
   );
 };
 
+//middleware checking valid user (token)
 export const isAuth = (req, res, next) => {
-  const authorizarion = req.headers.authorizarion;
-  if (authorizarion) {
-    const token = authorizarion.slice(7, authorizarion.length); // Bearer XXXXXX
+  const authorization = req.headers.authorization;
+  if (authorization) {
+    const token = authorization.slice(7, authorization.length); // Bearer XXXXXX
+    //validation for token
     jwt.verify(
       token,
       process.env.JWT_SECRET || 'somethingsecret',
@@ -26,12 +28,6 @@ export const isAuth = (req, res, next) => {
         if (error) {
           res.status(401).send({ msg: 'Invalid Token' });
         } else {
-          //decode = {
-          // _id: user._id,
-          // email: user.email,
-          // name: user.name,
-          // isAdmin: user.isAdmin,
-          // }
           req.user = decode;
           next();
         }
